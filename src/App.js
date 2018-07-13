@@ -33,6 +33,8 @@ const initialState = {
   user: {
     id: "",
     name: "",
+    age: "",
+    country: "",
     email: "",
     entries: 0,
     joined: "",
@@ -83,6 +85,8 @@ class App extends Component {
       user: {
         id: data.id,
         name: data.name,
+        age: data.age,
+        country: data.country,
         email: data.email,
         entries: data.entries,
         joined: data.joined,

@@ -5,7 +5,7 @@ class Profile extends Component {
   state = {
     name: this.props.user.name,
     age: this.props.user.age,
-    pet: this.props.user.pet,
+    country: this.props.user.country,
   };
 
   onFormChange = event => {
@@ -16,8 +16,8 @@ class Profile extends Component {
       case "user-age":
         this.setState({ age: event.target.value });
         break;
-      case "user-pet":
-        this.setState({ pet: event.target.value });
+      case "user-country":
+        this.setState({ country: event.target.value });
         break;
       default:
         return;
@@ -44,7 +44,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
-    const { name, age, pet } = this.state;
+    const { name, age, country } = this.state;
     return (
       <div className="profile-modal">
         <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white">
@@ -54,7 +54,9 @@ class Profile extends Component {
               className="h3 w3 dib"
               alt="avatar"
             />
-            <h1>{this.state.name}</h1>
+            <h1>
+              {this.state.name} from {this.state.country}. Age: {this.state.age}
+            </h1>
             <h4>{`Images Submitted: ${user.entries}`}</h4>
             <p>{`Member since: ${new Date(
               user.joined,
@@ -82,15 +84,15 @@ class Profile extends Component {
               id="age"
               onChange={this.onFormChange}
             />
-            <label className="mt2 fw6" htmlFor="user-pet">
-              Pet:
+            <label className="mt2 fw6" htmlFor="user-country">
+              Country:
             </label>
             <input
               className="pa2 ba w-100"
-              placeholder="Dragon"
+              placeholder="Spain"
               type="text"
-              name="user-pet"
-              id="pet"
+              name="user-country"
+              id="country"
               onChange={this.onFormChange}
             />
             <div
@@ -99,7 +101,7 @@ class Profile extends Component {
             >
               <button
                 className="b pa2 grow pointer hover-white w-40 bg-light-blue b--black-20"
-                onClick={() => this.onProfileUpdate({ name, age, pet })}
+                onClick={() => this.onProfileUpdate({ name, age, country })}
               >
                 Save
               </button>
