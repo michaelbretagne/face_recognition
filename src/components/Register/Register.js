@@ -7,6 +7,8 @@ class Register extends React.Component {
       email: "",
       password: "",
       name: "",
+      age: "",
+      country: "",
     };
   }
 
@@ -22,6 +24,14 @@ class Register extends React.Component {
     this.setState({ password: event.target.value });
   };
 
+  onAgeChange = event => {
+    this.setState({ age: event.target.value });
+  };
+
+  onCountryChange = event => {
+    this.setState({ country: event.target.value });
+  };
+
   onSubmitSignIn = () => {
     fetch("http://localhost:3000/register", {
       method: "post",
@@ -30,6 +40,8 @@ class Register extends React.Component {
         email: this.state.email,
         password: this.state.password,
         name: this.state.name,
+        age: this.state.age,
+        country: this.state.country,
       }),
     })
       .then(response => response.json())
@@ -82,6 +94,30 @@ class Register extends React.Component {
                   name="password"
                   id="password"
                   onChange={this.onPasswordChange}
+                />
+              </div>
+              <div className="mt3">
+                <label className="db fw6 lh-copy f6" htmlFor="age">
+                  Age
+                </label>
+                <input
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  type="text"
+                  name="age"
+                  id="age"
+                  onChange={this.onAgeChange}
+                />
+              </div>
+              <div className="mt3">
+                <label className="db fw6 lh-copy f6" htmlFor="country">
+                  Country
+                </label>
+                <input
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  type="text"
+                  name="country"
+                  id="country"
+                  onChange={this.onCountryChange}
                 />
               </div>
             </fieldset>
